@@ -23,4 +23,4 @@ ARG AUTOMAKE_VERSION=1.15
 COPY build-automake.sh /
 RUN bash -x /build-automake.sh
 
-RUN bash -xc "yum install -y fuse-devel"
+RUN bash -xc "yum install -y fuse-devel vim-common"
