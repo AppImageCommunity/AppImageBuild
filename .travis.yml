@@ -1,0 +1,14 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  - ARCH=x86_64
+#  - ARCH=i386
+
+before_install:
+  - docker login -u "$QUAY_USER" -p "$QUAY_PASS" quay.io
+
+script:
+  - bash build.sh --push
