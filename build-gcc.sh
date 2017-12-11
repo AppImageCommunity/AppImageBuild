@@ -17,10 +17,10 @@ if [ "$ARCH" == "i386" ]; then
 fi
 ../configure --prefix=/usr --enable-language=c,c++ --disable-multilib $EXTRA_CONFIGURE_FLAGS
 
-make -j$(nproc) &>/dev/null &
 set +x
-while ps -p $! &>/dev/null; do
-    echo -n .; sleep 1;
+echo "+ make -j$(nproc)" 1>&2
+make -j$(nproc) 2>&1 | while read line; do
+    echo -n .
 done
 echo
 set -x
