@@ -5,7 +5,7 @@ services:
 
 env:
   - ARCH=x86_64
-#  - ARCH=i386
+  - ARCH=i386
 
 before_install:
   - docker login -u "$QUAY_USER" -p "$QUAY_PASS" quay.io
