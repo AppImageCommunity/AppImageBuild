@@ -2,6 +2,9 @@ FROM centos:6.9
 
 RUN yum install -y gcc gcc-c++ wget make gnupg zip git subversion glib2-devel automake libtool patch zlib-devel cairo-devel openssl-devel libstdc++
 
+# inherited by build scripts
+ARG VERBOSE=0
+
 ARG GCC_VERSION=5.3.0
 COPY build-gcc.sh /
 RUN bash -x /build-gcc.sh
