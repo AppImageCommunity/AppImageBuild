@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# export BRANCH and/or COMMIT to modify the build process
+set -e
 
 log() { echo $(tput setaf 2)$(tput bold)"$*"$(tput sgr0) ; }
 
@@ -21,11 +21,11 @@ case "$ARCH" in
         ;;
 esac
 
-docker build -t "$image_name" -f "$dockerfile" .
+bash -xc "docker build -t '$image_name' -f '$dockerfile' ."
 
 if [ "$1" == "--push" ]; then
     log "Pushing to quay.io"
     echo
 
-    docker push "$image_name"
+    bash -xc "docker push '$image_name'"
 fi
