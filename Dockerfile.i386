@@ -26,4 +26,7 @@ ARG AUTOMAKE_VERSION=1.15
 COPY build-automake.sh /
 RUN bash -x /build-automake.sh
 
-RUN bash -xc "yum install -y fuse-devel vim-common"
+RUN bash -xc "yum install -y fuse-devel vim-common zlib-devel desktop-file-utils fuse fuse-libs gtest-devel && \
+    wget https://github.com/kikitux/blog/raw/master/zsync/zsync-0.6.2-1.el6.rf.i686.rpm && \
+    echo 'f3ed20ea1b813e150f802b4c6b80ada2  zsync-0.6.2-1.el6.rf.i686.rpm' | md5sum -c && \
+    rpm -Uvh zsync-0.6.2-1.el6.rf.i686.rpm"
