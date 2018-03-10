@@ -16,6 +16,10 @@ case "$ARCH" in
         image_name="$image_name-i386"
         dockerfile="$dockerfile.i386"
         ;;
+    armhf-qemu)
+        image_name="$image_name-armhf-qemu"
+        dockerfile="$dockerfile.armhf-qemu"
+        ;;
     *)
         echo "Unknown architecture: $ARCH"
         ;;
