@@ -4,8 +4,6 @@ set -e
 
 log() { echo $(tput setaf 2)$(tput bold)"$*"$(tput sgr0) ; }
 
-ARCH=${ARCH:-x86_64}
-
 dockerfile="Dockerfile"
 image_name="quay.io/appimage/appimagebuild"
 
