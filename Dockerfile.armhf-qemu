@@ -23,4 +23,4 @@ COPY build-automake.sh /
 RUN bash -x /build-automake.sh
 
 # desktop-integration dependencies
-RUN bash -xc "apt-get install -y libxft-dev librsvg2-2 sudo gnupg2"
+RUN bash -xc "apt-get install -y libxft-dev librsvg2-2 sudo gnupg2 curl"

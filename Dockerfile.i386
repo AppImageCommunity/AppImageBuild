@@ -33,4 +33,4 @@ RUN bash -xc "yum install -y fuse-devel vim-common zlib-devel desktop-file-utils
     rm zsync-0.6.2-1.el6.rf.i686.rpm"
 
 # desktop-integration dependencies
-RUN bash -xc "yum install -y libXft-devel librsvg2"
+RUN bash -xc "yum install -y libXft-devel librsvg2 curl"
