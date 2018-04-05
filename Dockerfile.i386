@@ -34,3 +34,8 @@ RUN bash -xc "yum install -y fuse-devel vim-common zlib-devel desktop-file-utils
 
 # desktop-integration dependencies
 RUN bash -xc "yum install -y libXft-devel librsvg2 curl"
+
+RUN bash -xc "yum install -y ncurses-devel texinfo"
+ARG GDB_VERSION=7.10
+COPY build-gdb.sh /
+RUN bash -x /build-gdb.sh
