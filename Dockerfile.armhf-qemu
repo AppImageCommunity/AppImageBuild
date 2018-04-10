@@ -25,7 +25,7 @@ RUN bash -x /build-automake.sh
 # desktop-integration dependencies
 RUN bash -xc "apt-get install -y libxft-dev librsvg2-2 sudo gnupg2 curl"
 
-RUN bash -xc "yum install -y ncurses-devel texinfo"
+RUN bash -xc "apt-get install -y libncurses5-dev texinfo"
 ARG GDB_VERSION=7.10
 COPY build-gdb.sh /
 RUN bash -x /build-gdb.sh
