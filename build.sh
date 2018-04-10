@@ -36,6 +36,7 @@ case "$ARCH" in
         ;;
     *)
         echo "Unknown architecture: $ARCH"
+        exit 1
         ;;
 esac
 
