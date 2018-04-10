@@ -9,7 +9,7 @@ cd gdb-$GDB_VERSION
 # required to make the compiler happy
 export CFLAGS="$CFLAGS -Wno-error"
 
-EXTRA_CONFIGURE_FLAGS=
+EXTRA_CONFIGURE_FLAGS=" --libdir=/usr/lib64"
 if [ "$ARCH" == "i386" ]; then
     EXTRA_CONFIGURE_FLAGS=" --build=i686-linux-gnu --host=i686-linux-gnu --target=i686-linux-gnu"
 fi

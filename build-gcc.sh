@@ -11,7 +11,7 @@ contrib/download_prerequisites
 mkdir objdir
 cd objdir
 
-EXTRA_CONFIGURE_FLAGS=
+EXTRA_CONFIGURE_FLAGS=" --libdir=/usr/lib64"
 if [ "$ARCH" == "i386" ]; then
     EXTRA_CONFIGURE_FLAGS=" --build=i686-linux-gnu --host=i686-linux-gnu --target=i686-linux-gnu"
 fi
