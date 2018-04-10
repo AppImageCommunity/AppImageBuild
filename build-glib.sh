@@ -30,6 +30,12 @@ set -x
 
 make install
 
+# pkg-config files are installed into the wrong location, at least on CentOS 6
+# the following check fixes this issue
+if [ -d /usr/share/pkgconfig ]; then
+    mv /usr/lib/pkgconfig/* /usr/share/pkgconfig
+fi
+
 cd ../../
 rm -rf glib-$GLIB_VERSION/
 
