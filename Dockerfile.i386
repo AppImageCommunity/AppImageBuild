@@ -39,3 +39,8 @@ RUN bash -xc "yum install -y ncurses-devel texinfo"
 ARG GDB_VERSION=7.10
 COPY build-gdb.sh /
 RUN bash -x /build-gdb.sh
+
+RUN bash -xc "yum install -y xz libffi-devel gettext-devel"
+ARG GLIB_VERSION=2.40.0
+COPY build-glib.sh /
+RUN bash -x /build-glib.sh
