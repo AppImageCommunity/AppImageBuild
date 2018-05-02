@@ -44,3 +44,6 @@ RUN bash -xc "yum install -y xz libffi-devel gettext-devel"
 ARG GLIB_VERSION=2.40.0
 COPY build-glib.sh /
 RUN bash -x /build-glib.sh
+
+# set up PKG_CONFIG_PATH to ensure that deps in /deps have precedence
+ENV PKG_CONFIG_PATH=/deps/lib/pkgconfig:/deps/share/pkgconfig
