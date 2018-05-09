@@ -13,7 +13,7 @@ EXTRA_CONFIGURE_FLAGS=
 if [ "$ARCH" == "i386" ]; then
     EXTRA_CONFIGURE_FLAGS=" --build=i686-linux-gnu --host=i686-linux-gnu --target=i686-linux-gnu"
 fi
-./configure --prefix=/deps $EXTRA_CONFIGURE_FLAGS
+./configure --prefix=/deps --disable-selinux $EXTRA_CONFIGURE_FLAGS
 
 set +x
 echo "+ make -j$(nproc)" 1>&2
