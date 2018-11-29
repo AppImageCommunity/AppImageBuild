@@ -1,0 +1,59 @@
+FROM ubuntu:trusty
+
+RUN apt-get update && \
+    apt-get install -y gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf wget make gnupg zip git subversion automake libtool patch fuse vim-common desktop-file-utils bzip2 xz-utils
+
+# inherited by build scripts
+ARG VERBOSE=0
+ENV ARCH=armhf
+
+RUN apt-get install -y g++ gcc
+
+ARG ZLIB_VERSION=1.2.11
+COPY build-zlib.sh /
+RUN bash -x /build-zlib.sh
+
+# system dependencies for CMake (will be built as x86_64)
+RUN apt-get install -y zlib1g-dev libcurl4-openssl-dev
+ARG CMAKE_VERSION=3.12.0
+COPY build-cmake.sh /
+RUN bash -x /build-cmake.sh
+
+ARG AUTOCONF_VERSION=2.69
+COPY build-autoconf.sh /
+RUN bash -x /build-autoconf.sh
+
+ARG AUTOMAKE_VERSION=1.15
+COPY build-automake.sh /
+RUN bash -x /build-automake.sh
+
+# desktop-integration dependencies
+RUN bash -xc "apt-get install -y libxft-dev librsvg2-2 sudo gnupg2 curl"
+
+RUN bash -xc "apt-get install -y libncurses5-dev texinfo"
+ARG GDB_VERSION=7.10
+COPY build-gdb.sh /
+RUN bash -x /build-gdb.sh
+
+ARG LIBFFI_VERSION=3.2.1
+COPY build-libffi.sh /
+RUN bash -x /build-libffi.sh
+
+# set up PKG_CONFIG_PATH to ensure that deps in /deps have precedence
+ENV PKG_CONFIG_PATH=/deps/lib/pkgconfig:/deps/share/pkgconfig
+
+ARG GETTEXT_VERSION=0.19
+COPY build-gettext.sh /
+RUN bash -x /build-gettext.sh
+
+RUN find /deps
+
+# need qemu-user-static to emulate-run ARM binaries
+RUN apt-get install -y --no-install-recommends qemu-user-static
+# make linker and libraries available in the right paths
+RUN ln -s /usr/arm-linux-gnueabihf/lib/ld-linux-armhf.so.3 /lib/
+ENV LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib
+
+ARG GLIB_VERSION=2.44.0
+COPY build-glib.sh /
+RUN bash -x /build-glib.sh
