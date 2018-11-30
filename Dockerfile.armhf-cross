@@ -57,3 +57,37 @@ ENV LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib
 ARG GLIB_VERSION=2.44.0
 COPY build-glib.sh /
 RUN bash -x /build-glib.sh
+
+ARG LIBPNG_VERSION=1.6.35
+COPY build-libpng.sh /
+RUN bash -x /build-libpng.sh
+
+ARG PIXMAN_VERSION=0.34.0
+COPY build-pixman.sh /
+RUN bash -x /build-pixman.sh
+
+ARG FREETYPE2_VERSION=2.9.1
+COPY build-freetype2.sh /
+RUN bash -x /build-freetype2.sh
+
+ARG LIBUUID_VERSION=1.0.3
+COPY build-libuuid.sh /
+RUN bash -x /build-libuuid.sh
+
+RUN apt-get install -y gperf
+
+ARG LIBXML2_VERSION=2.9.8
+COPY build-libxml2.sh /
+RUN bash -x /build-libxml2.sh
+
+ARG FONTCONFIG_VERSION=2.13.1
+COPY build-fontconfig.sh /
+RUN bash -x /build-fontconfig.sh
+
+ARG CAIRO_VERSION=1.16.0
+COPY build-cairo.sh /
+RUN bash -x /build-cairo.sh
+
+ARG FUSE_VERSION=2.9.7
+COPY build-fuse.sh /
+RUN bash -x /build-fuse.sh
