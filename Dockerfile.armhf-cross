@@ -91,3 +91,7 @@ RUN bash -x /build-cairo.sh
 ARG FUSE_VERSION=2.9.7
 COPY build-fuse.sh /
 RUN bash -x /build-fuse.sh
+
+# make sure that the wrong-architecture libssl is not found by CMake
+# FIXME: install/build compatible libssl, or remove dependency
+RUN apt-get purge -y libssl-dev
