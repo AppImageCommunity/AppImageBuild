@@ -95,3 +95,8 @@ RUN bash -x /build-fuse.sh
 # make sure that the wrong-architecture libssl is not found by CMake
 # FIXME: install/build compatible libssl, or remove dependency
 RUN apt-get purge -y libssl-dev
+
+# install compatible zsyncmake
+RUN wget https://ftp.fau.de/debian/pool/main/z/zsync/zsync_0.6.2-1_armhf.deb && \
+    dpkg -x zsync*.deb / && \
+    rm zsync*.deb
