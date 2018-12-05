@@ -38,7 +38,7 @@ COPY build-gdb.sh /
 RUN bash -x /build-gdb.sh
 
 RUN bash -xc "yum install -y xz libffi-devel gettext-devel"
-ARG GLIB_VERSION=2.40.0
+ARG GLIB_VERSION=2.44.0
 COPY build-glib.sh /
 RUN bash -x /build-glib.sh
 
