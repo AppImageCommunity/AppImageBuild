@@ -6,7 +6,7 @@ wget https://sourceforge.net/projects/libuuid/files/libuuid-"$LIBUUID_VERSION".t
 
 cd libuuid-"$LIBUUID_VERSION"
 
-export CHOST=arm-linux-gnueabihf
+export CHOST="$DEBARCH"
 export CFLAGS="-I/deps/include"
 export CPPFLAGS="$CFLAGS"
 export LDFLAGS="-L/deps/lib"

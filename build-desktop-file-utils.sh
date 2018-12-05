@@ -2,11 +2,12 @@
 
 set -xe
 
-git clone https://gitlab.gnome.org/GNOME/libxml2/ --recursive --depth=10 -b v"$LIBXML2_VERSION" libxml2-"$LIBXML2_VERSION"
+git clone https://gitlab.freedesktop.org/gstreamer/desktop-file-utils.git -b "$DESKTOP_FILE_UTILS_VERSION" desktop-file-utils-"$DESKTOP_FILE_UTILS_VERSION"
 
-cd libxml2-"$LIBXML2_VERSION"
+cd desktop-file-utils-"$DESKTOP_FILE_UTILS_VERSION"
 
 export CHOST="$DEBARCH"
+
 export CFLAGS="-I/deps/include"
 export CPPFLAGS="$CFLAGS"
 export LDFLAGS="-L/deps/lib"
@@ -20,4 +21,4 @@ make install
 
 cd ..
 
-rm -rf libxml2-"$LIBXML2_VERSION"
+rm -rf desktop-file-utils-"$DESKTOP_FILE_UTILS_VERSION"/

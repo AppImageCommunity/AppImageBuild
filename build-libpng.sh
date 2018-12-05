@@ -6,7 +6,7 @@ wget -O- https://sourceforge.net/projects/libpng/files/libpng16/"$LIBPNG_VERSION
 
 cd libpng-"$LIBPNG_VERSION"
 
-export CHOST=arm-linux-gnueabihf
+export CHOST="$DEBARCH"
 
 # https://sourceforge.net/p/libpng/bugs/227/
 export CFLAGS="-I/deps/include"

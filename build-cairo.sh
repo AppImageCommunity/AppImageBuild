@@ -6,7 +6,7 @@ wget https://ftp.fau.de/debian/pool/main/c/cairo/cairo_"$CAIRO_VERSION".orig.tar
 
 cd cairo-"$CAIRO_VERSION"
 
-export CHOST=arm-linux-gnueabihf
+export CHOST="$DEBARCH"
 export CFLAGS="-I/deps/include"
 export CPPFLAGS="$CFLAGS"
 export LDFLAGS="-L/deps/lib"
