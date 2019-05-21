@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 
 ENV ARCH=armhf
 ENV DEBARCH=arm-linux-gnueabihf
