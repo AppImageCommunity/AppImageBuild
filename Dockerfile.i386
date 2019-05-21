@@ -47,3 +47,6 @@ RUN bash -x /build-glib.sh
 
 # set up PKG_CONFIG_PATH to ensure that deps in /deps have precedence
 ENV PKG_CONFIG_PATH=/deps/lib/pkgconfig:/deps/share/pkgconfig
+
+# install rsvg
+RUN yum install -y librsvg2-devel
