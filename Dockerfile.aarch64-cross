@@ -99,7 +99,7 @@ RUN bash -x /build-fuse.sh
 RUN apt-get purge -y libssl-dev
 
 ARG QEMU_VERSION=3.0.0
-RUN apt-get install -y python-dev dpkg-dev libglib2.0-dev libpixman-1-dev
+RUN apt-get install -y python-dev dpkg-dev libglib2.0-dev libpixman-1-dev librsvg2-dev
 COPY build-qemu.sh /
 RUN bash -x /build-qemu.sh
 RUN cp /usr/bin/qemu-aarch64 /usr/bin/qemu-aarch64-static
@@ -112,3 +112,4 @@ ARG DESKTOP_FILE_UTILS_VERSION=0.23
 COPY build-desktop-file-utils.sh /
 RUN bash -x /build-desktop-file-utils.sh
 
+RUN apt-get install -y librsvg2-dev

@@ -112,3 +112,4 @@ ARG DESKTOP_FILE_UTILS_VERSION=0.23
 COPY build-desktop-file-utils.sh /
 RUN bash -x /build-desktop-file-utils.sh
 
+RUN apt-get install -y librsvg2-dev
