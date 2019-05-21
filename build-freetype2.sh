@@ -8,7 +8,7 @@ ls -al
 
 cd freetype-"$FREETYPE2_VERSION"
 
-export CHOST=arm-linux-gnueabihf
+export CHOST="$DEBARCH"
 export CFLAGS="-I/deps/include"
 export CPPFLAGS="$CFLAGS"
 export LDFLAGS="-L/deps/lib"

@@ -6,7 +6,7 @@ wget https://sourceware.org/pub/libffi/libffi-"$LIBFFI_VERSION".tar.gz -O- | tar
 
 cd libffi-"$LIBFFI_VERSION"
 
-./configure --prefix=/deps --host=arm-linux-gnueabihf
+./configure --prefix=/deps --host="$DEBARCH"
 
 # build and install into prefix
 make all -j$(nproc)

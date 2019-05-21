@@ -6,7 +6,7 @@ wget https://zlib.net/zlib-"$ZLIB_VERSION".tar.gz -O- | tar xz
 
 cd zlib-"$ZLIB_VERSION"
 
-export CHOST=arm-linux-gnueabihf
+export CHOST="$DEBARCH"
 ./configure --prefix=/deps
 
 # build and install into prefix

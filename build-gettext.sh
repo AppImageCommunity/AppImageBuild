@@ -6,7 +6,7 @@ wget https://ftp.gnu.org/gnu/gettext/gettext-"$GETTEXT_VERSION".tar.gz -O- | tar
 
 cd gettext-"$GETTEXT_VERSION"
 
-export CHOST=arm-linux-gnueabihf
+export CHOST="$DEBARCH"
 ./configure --prefix=/deps --host="$CHOST" --target="$CHOST"
 
 # build and install into prefix

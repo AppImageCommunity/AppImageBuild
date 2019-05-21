@@ -6,7 +6,7 @@ wget https://ftp.fau.de/debian/pool/main/p/pixman/pixman_"$PIXMAN_VERSION".orig.
 
 cd pixman-"$PIXMAN_VERSION"
 
-export CHOST=arm-linux-gnueabihf
+export CHOST="$DEBARCH"
 export CFLAGS="-I/deps/include"
 export LDFLAGS="-I/deps/lib"
 export CC="$CHOST"-gcc

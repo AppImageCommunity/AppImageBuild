@@ -12,8 +12,8 @@ export CFLAGS="$CFLAGS -Wno-error"
 EXTRA_CONFIGURE_FLAGS=
 if [ "$ARCH" == "i386" ]; then
     EXTRA_CONFIGURE_FLAGS=" --build=i686-linux-gnu --host=i686-linux-gnu --target=i686-linux-gnu"
-elif [ "$ARCH" == "armhf" ]; then
-    EXTRA_CONFIGURE_FLAGS=" --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf"
+elif [ "$ARCH" == "armhf" ] || [ "$ARCH" == "aarch64" ]; then
+    EXTRA_CONFIGURE_FLAGS=" --host=$DEBARCH --target=$DEBARCH"
 
     # https://askubuntu.com/a/338670
     export PATH=/deps/bin:"$PATH"

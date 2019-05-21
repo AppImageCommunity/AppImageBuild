@@ -34,6 +34,10 @@ case "$ARCH" in
         image_name="$image_name-armhf-cross"
         dockerfile="$dockerfile.armhf-cross"
         ;;
+    aarch64-cross)
+        image_name="$image_name-aarch64-cross"
+        dockerfile="$dockerfile.aarch64-cross"
+        ;;
     *)
         echo "Unknown architecture: $ARCH"
         exit 1

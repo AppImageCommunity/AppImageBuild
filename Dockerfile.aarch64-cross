@@ -1,7 +1,7 @@
 FROM ubuntu:trusty
 
-ENV ARCH=armhf
-ENV DEBARCH=arm-linux-gnueabihf
+ENV ARCH=aarch64
+ENV DEBARCH=aarch64-linux-gnu
 
 RUN apt-get update && \
     apt-get install -y gcc-$DEBARCH g++-$DEBARCH wget make gnupg zip git subversion automake libtool patch fuse vim-common desktop-file-utils bzip2 xz-utils
@@ -53,7 +53,7 @@ RUN find /deps
 # need qemu-user-static to emulate-run ARM binaries
 RUN apt-get install -y --no-install-recommends qemu-user-static
 # make linker and libraries available in the right paths
-RUN ln -s /usr/$DEBARCH/lib/ld-linux*.so.* /lib/
+RUN ln -s /usr/$DEBARCH/lib/ld-linux-*.so.* /lib/
 ENV LD_LIBRARY_PATH=/usr/$DEBARCH/lib
 
 ARG GLIB_VERSION=2.44.0
@@ -102,7 +102,7 @@ ARG QEMU_VERSION=3.0.0
 RUN apt-get install -y python-dev dpkg-dev libglib2.0-dev libpixman-1-dev
 COPY build-qemu.sh /
 RUN bash -x /build-qemu.sh
-RUN cp /usr/bin/qemu-arm /usr/bin/qemu-arm-static
+RUN cp /usr/bin/qemu-aarch64 /usr/bin/qemu-aarch64-static
 
 ARG ZSYNC_VERSION=0.6.2
 COPY build-zsync.sh /
