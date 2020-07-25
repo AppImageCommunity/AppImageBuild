@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 
 ENV ARCH=armhf
 ENV DEBARCH=arm-linux-gnueabihf
@@ -56,15 +56,17 @@ RUN apt-get install -y --no-install-recommends qemu-user-static
 RUN ln -s /usr/$DEBARCH/lib/ld-linux*.so.* /lib/
 ENV LD_LIBRARY_PATH=/usr/$DEBARCH/lib
 
-ARG GLIB_VERSION=2.44.0
-COPY build-glib.sh /
-RUN bash -x /build-glib.sh
+ARG QEMU_VERSION=3.0.0
+RUN apt-get install -y python-dev dpkg-dev libglib2.0-dev libpixman-1-dev
+COPY build-qemu.sh /
+RUN bash -x /build-qemu.sh
+RUN cp /usr/bin/qemu-arm /usr/bin/qemu-arm-static
 
 ARG LIBPNG_VERSION=1.6.35
 COPY build-libpng.sh /
 RUN bash -x /build-libpng.sh
 
-ARG PIXMAN_VERSION=0.34.0
+ARG PIXMAN_VERSION=0.35.0
 COPY build-pixman.sh /
 RUN bash -x /build-pixman.sh
 
@@ -98,12 +100,6 @@ RUN bash -x /build-fuse.sh
 # FIXME: install/build compatible libssl, or remove dependency
 RUN apt-get purge -y libssl-dev
 
-ARG QEMU_VERSION=3.0.0
-RUN apt-get install -y python-dev dpkg-dev libglib2.0-dev libpixman-1-dev
-COPY build-qemu.sh /
-RUN bash -x /build-qemu.sh
-RUN cp /usr/bin/qemu-arm /usr/bin/qemu-arm-static
-
 ARG ZSYNC_VERSION=0.6.2
 COPY build-zsync.sh /
 RUN bash -x /build-zsync.sh
@@ -111,4 +107,23 @@ RUN bash -x /build-zsync.sh
 ARG DESKTOP_FILE_UTILS_VERSION=0.23
 COPY build-desktop-file-utils.sh /
 RUN bash -x /build-desktop-file-utils.sh
+
+RUN apt-get install -y librsvg2-dev
+
+# pcre >= 8.13 required by glib 2.56
+ARG PCRE_VERSION=8.43
+COPY build-pcre.sh /
+RUN bash -x /build-pcre.sh
+
+# set up PKG_CONFIG_PATH to ensure that deps in /deps have precedence
+# also, pcre is a dep of glib
+ENV PKG_CONFIG_PATH=/deps/lib/pkgconfig:/deps/share/pkgconfig
+
+ARG PYTHON_VERSION=2.7
+COPY build-python.sh /
+RUN bash -x /build-python.sh
+
+ARG GLIB_VERSION=2.56.0
+COPY build-glib.sh /
+RUN bash -x /build-glib.sh
 

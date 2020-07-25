@@ -33,17 +33,30 @@ RUN bash -xc "yum install -y fuse-devel vim-common zlib-devel desktop-file-utils
     rm zsync-0.6.2-1.el6.rf.i686.rpm"
 
 # desktop-integration dependencies
-RUN bash -xc "yum install -y libXft-devel librsvg2 curl"
+RUN bash -xc "yum install -y libXft-devel librsvg2-devel curl"
 
 RUN bash -xc "yum install -y ncurses-devel texinfo"
 ARG GDB_VERSION=7.10
 COPY build-gdb.sh /
 RUN bash -x /build-gdb.sh
 
+# deps for glib
 RUN bash -xc "yum install -y xz libffi-devel gettext-devel"
-ARG GLIB_VERSION=2.44.0
+
+# pcre >= 8.13 required by glib 2.56
+ARG PCRE_VERSION=8.43
+COPY build-pcre.sh /
+RUN bash -x /build-pcre.sh
+
+# set up PKG_CONFIG_PATH to ensure that deps in /deps have precedence
+# also, pcre is a dep of glib
+ENV PKG_CONFIG_PATH=/deps/lib/pkgconfig:/deps/share/pkgconfig
+
+ARG PYTHON_VERSION=2.7
+COPY build-python.sh /
+RUN bash -x /build-python.sh
+
+ARG GLIB_VERSION=2.56.0
 COPY build-glib.sh /
 RUN bash -x /build-glib.sh
 
-# set up PKG_CONFIG_PATH to ensure that deps in /deps have precedence
-ENV PKG_CONFIG_PATH=/deps/lib/pkgconfig:/deps/share/pkgconfig
