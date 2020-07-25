@@ -2,7 +2,7 @@
 
 set -xe
 
-wget https://ftp.wrz.de/pub/gnu/gcc/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.gz -O- | tar xz
+wget https://ftp.gwdg.de/pub/misc/gcc/releases/gcc-$GCC_VERSION/gcc-$GCC_VERSION.tar.gz -O- | tar xz
 
 cd gcc-$GCC_VERSION
 

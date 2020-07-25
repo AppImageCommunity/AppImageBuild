@@ -2,7 +2,7 @@
 
 set -xe
 
-wget https://ftp.wrz.de/pub/gnu/gdb/gdb-$GDB_VERSION.tar.gz -O- | tar xz
+wget https://ftp.gnu.org/gnu/gdb/gdb-$GDB_VERSION.tar.gz -O- | tar xz
 
 cd gdb-$GDB_VERSION
 
