@@ -7,7 +7,9 @@ wget https://ftp.fau.de/gnome/sources/glib/$(echo "$GLIB_VERSION" | cut -d. -f1-
 cd glib-$GLIB_VERSION
 
 # required to make the compiler happy
-export CFLAGS="$CFLAGS -Wno-error"
+
+# https://unix.stackexchange.com/a/353761
+export CFLAGS="$CFLAGS -Wno-error -D_GNU_SOURCE -DF_SETPIPE_SZ=1024+7 -DF_GETPIPE_SZ=1024+8"
 
 EXTRA_CONFIGURE_FLAGS=
 if [ "$ARCH" == "i386" ]; then
@@ -19,9 +21,12 @@ elif [ "$ARCH" == "armhf" ] || [ "$ARCH" == "aarch64" ]; then
     export PATH=/deps/bin:"$PATH"
 fi
 
-[ -f autogen.sh ] && ./autogen.sh
+#[ -f autogen.sh ] && ./autogen.sh
 
-./configure --prefix=/deps --disable-selinux $EXTRA_CONFIGURE_FLAGS
+export PCRE_CFLAGS="-I/deps/include"
+export PCRE_LIBS="-L/deps/lib -lpcre"
+export LD_LIBRARY_PATH="/deps/lib:$LD_LIBRARY_PATH"
+./configure --verbose --prefix=/deps --disable-selinux --disable-libmount --enable-libmount=no $EXTRA_CONFIGURE_FLAGS || cat config.log
 
 set +x
 echo "+ make -j$(nproc)" 1>&2

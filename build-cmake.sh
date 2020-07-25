@@ -2,8 +2,6 @@
 
 set -xe
 
-find /deps
-
 wget https://cmake.org/files/v$(echo $CMAKE_VERSION | cut -d. -f-2)/cmake-$CMAKE_VERSION.tar.gz -O- | tar xz
 
 cd cmake-$CMAKE_VERSION
