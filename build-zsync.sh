@@ -12,8 +12,6 @@ export CFLAGS="-I/deps/include"
 export CPPFLAGS="$CFLAGS"
 export LDFLAGS="-L/deps/lib"
 
-cp /usr/share/misc/config.{guess,sub} autotools/
-
 aclocal
 autoconf
 automake --add-missing
