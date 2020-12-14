@@ -28,6 +28,7 @@ packages=(
     liblzma-dev
     cmake
     libssl-dev
+    zsync
 )
 
 apt-get install -y "${packages[@]}"
