@@ -1,0 +1,32 @@
+name: Main pipeline
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 6 * * 0'
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        ARCH: ['x86_64', 'i386']
+        DIST: ['centos7']
+        include:
+          - ARCH: 'aarch64'
+            DIST: 'xenial'
+          - ARCH: 'armhf'
+            DIST: 'xenial'
+
+    name: Build ${{ matrix.DIST }}  (${{ matrix.ARCH }})
+    env:
+      DIST: ${{ matrix.DIST }}
+      ARCH: ${{ matrix.ARCH }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up QEMU integration for Docker
+        run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+      - name: Build and upload Docker image
+        run: bash -ex build.sh --pull --push
