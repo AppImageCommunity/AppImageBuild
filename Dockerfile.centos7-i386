@@ -1,11 +1,9 @@
 FROM i386/centos:7
 
+ENV ARCH=i386 DIST=centos7
+
 # inherited by build scripts
 ARG VERBOSE=0
-
-# during Docker build, yum doesn't detect it's an i386 environment on x86_64 machines, and tries to install x86_64 packages, which can't work
-# this little command fixes this
-#RUN sed -i 's/$basearch/i386/g' /etc/yum.repos.d/CentOS-Base.repo
 
 # thanks CloudLinux, you're really helping us poor AppImage creators seeking for maximum compatibility by providing devtoolset i386 builds
 RUN yum install -y yum-utils && \

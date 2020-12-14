@@ -1,7 +1,9 @@
 FROM arm32v7/ubuntu:xenial
 
-ENV ARCH=armhf
-ENV DIST=xenial
+ENV ARCH=armhf DIST=xenial
+
+# inherited by build scripts
+ARG VERBOSE=0
 
 COPY ./install-deps-ubuntu.sh /
 RUN bash -x /install-deps-ubuntu.sh
