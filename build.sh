@@ -30,7 +30,7 @@ while [ "$1" != "" ]; do
 done
 
 if [ "$pull" != "" ]; then
-     docker pull "$image_name"
+     docker pull "$image_name" || echo "Warning: pulling base image failed"
 fi
 
 docker build --pull --cache-from "$image_name" -t "$image_name" -f "$dockerfile" .
