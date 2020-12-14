@@ -38,3 +38,7 @@ RUN bash -x /build-glib.sh
 ARG GIT_VERSION=2.29.2
 COPY build-git.sh /
 RUN bash -x /build-git.sh
+
+ARG GIT_VERSION=0.62
+COPY build-zsync.sh /
+RUN bash -x /build-zsync.sh
