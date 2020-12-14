@@ -27,6 +27,7 @@ packages=(
     librsvg2-bin
     liblzma-dev
     cmake
+    libssl-dev
 )
 
 apt-get install -y "${packages[@]}"
