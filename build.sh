@@ -33,11 +33,11 @@ if [ "$pull" != "" ]; then
      docker pull "$image_name"
 fi
 
-docker build --pull --cache-from "$image_name" -t '$image_name' -f '$dockerfile' .
+docker build --pull --cache-from "$image_name" -t "$image_name" -f "$dockerfile" .
 
 if [ "$push" != "" ]; then
     log "pushing to quay.io"
     echo
 
-    bash -xc "docker push '$image_name'"
+    docker push "$image_name"
 fi
