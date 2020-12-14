@@ -8,7 +8,7 @@ case "$ARCH" in
        cmake_arch=arm64v8
        ;;
     arm32*|armhf)
-       cmake_arch=arm32v7
+       cmake_arch=armhf
        ;;
     i?86)
        cmake_arch=i386
