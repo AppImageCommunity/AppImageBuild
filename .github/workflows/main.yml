@@ -10,6 +10,7 @@ on:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         ARCH: ['x86_64', 'i386']
         DIST: ['centos7']
