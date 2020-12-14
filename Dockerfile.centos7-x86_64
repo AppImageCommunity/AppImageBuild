@@ -36,6 +36,6 @@ ARG GIT_VERSION=2.29.2
 COPY build-git.sh /
 RUN bash -x /build-git.sh
 
-ARG ZSYNC_VERSION=0.62
+ARG ZSYNC_VERSION=0.6.2
 COPY build-zsync.sh /
 RUN bash -x /build-zsync.sh
