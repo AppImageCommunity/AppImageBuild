@@ -39,3 +39,8 @@ RUN bash -x /build-git.sh
 ARG ZSYNC_VERSION=0.6.2
 COPY build-zsync.sh /
 RUN bash -x /build-zsync.sh
+
+# create unprivileged user for non-build-script use of this image
+# build-in-docker.sh will likely not use this one, as it enforces the caller's uid inside the container
+RUN adduser --system --group build
+USER build

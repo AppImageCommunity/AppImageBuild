@@ -10,3 +10,8 @@ RUN bash -x /install-deps-ubuntu.sh
 
 COPY ./install-cmake.sh /
 RUN bash -x /install-cmake.sh
+
+# create unprivileged user for non-build-script use of this image
+# build-in-docker.sh will likely not use this one, as it enforces the caller's uid inside the container
+RUN adduser --system --group build
+USER build
