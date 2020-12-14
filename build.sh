@@ -33,7 +33,7 @@ if [ "$pull" != "" ]; then
      docker pull "$(grep -i -E '^from' "$dockerfile" | cut -d' ' -f2)"
 fi
 
-docker build --cache-from "$image_name" -t '$image_name' -f '$dockerfile' .
+docker build --pull --cache-from "$image_name" -t '$image_name' -f '$dockerfile' .
 
 if [ "$push" != "" ]; then
     log "pushing to quay.io"
