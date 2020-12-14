@@ -19,6 +19,8 @@ jobs:
             DIST: 'xenial'
           - ARCH: 'armhf'
             DIST: 'xenial'
+          - ARCH: x86_64
+            DIST: xenial
 
     name: Build ${{ matrix.DIST }}  (${{ matrix.ARCH }})
     env:
