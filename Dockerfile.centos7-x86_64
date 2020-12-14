@@ -42,5 +42,5 @@ RUN bash -x /build-zsync.sh
 
 # create unprivileged user for non-build-script use of this image
 # build-in-docker.sh will likely not use this one, as it enforces the caller's uid inside the container
-RUN groupadd --system build && adduser --system --group build
+RUN useradd --system build
 USER build
