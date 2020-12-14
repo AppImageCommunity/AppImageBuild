@@ -29,6 +29,7 @@ packages=(
     cmake
     libssl-dev
     zsync
+    fuse
 )
 
 apt-get install -y "${packages[@]}"
