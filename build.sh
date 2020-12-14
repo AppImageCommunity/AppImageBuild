@@ -30,7 +30,7 @@ while [ "$1" != "" ]; do
 done
 
 if [ "$pull" != "" ]; then
-     bash -xc "docker pull '$(grep -i -E '^from' "$dockerfile" | cut -d' ' -f2)'"
+     docker pull "$(grep -i -E '^from' "$dockerfile" | cut -d' ' -f2)"
 fi
 
 bash -xc "docker build -t '$image_name' -f '$dockerfile' ."
