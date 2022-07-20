@@ -2,8 +2,7 @@
 
 set -xe
 
-wget https://downloads.sourceforge.net/project/pcre/pcre/"$PCRE_VERSION"/pcre-"$PCRE_VERSION".tar.gz
-wget https://ftp.pcre.org/pub/pcre/pcre-"$PCRE_VERSION".tar.gz -O- | tar xz
+wget https://downloads.sourceforge.net/project/pcre/pcre/"$PCRE_VERSION"/pcre-"$PCRE_VERSION".tar.gz -O - | tar xz
 
 cd pcre-"$PCRE_VERSION"
 
