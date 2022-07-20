@@ -2,9 +2,10 @@
 
 set -xe
 
+wget https://downloads.sourceforge.net/project/pcre/pcre/"$PCRE_VERSION"/pcre-"$PCRE_VERSION".tar.gz
 wget https://ftp.pcre.org/pub/pcre/pcre-"$PCRE_VERSION".tar.gz -O- | tar xz
 
-cd pcre-$PCRE_VERSION
+cd pcre-"$PCRE_VERSION"
 
 # required to make the compiler happy
 export CFLAGS="$CFLAGS -Wno-error"
@@ -39,4 +40,4 @@ set -x
 make install
 
 cd ../../
-rm -rf pcre-$PCRE_VERSION/
+rm -rf pcre-"$PCRE_VERSION"/
