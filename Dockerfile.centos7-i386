@@ -20,7 +20,7 @@ COPY /entrypoint-centos.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 SHELL ["/entrypoint.sh", "bash", "-c"]
 
-RUN yum update ca-certificates
+RUN yum update -y ca-certificates
 RUN wget https://artifacts.assassinate-you.net/prebuilt-cmake/cmake-v3.19.1-centos7-i386.tar.gz -O- | tar xz --strip-components=1 -C/usr/local
 
 # pcre >= 8.40 required by glib 2.56
