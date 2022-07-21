@@ -65,6 +65,14 @@ ARG LIBGCRYPT_VERSION=1.10.1
 COPY build-libgcrypt.sh /
 RUN bash -x /build-libgcrypt.sh
 
+ARG LIBKSBA_VERSION=1.6.0
+COPY build-libksba.sh /
+RUN bash -x /build-libksba.sh
+
+ARG GNUPG_VERSION=2.3.7
+COPY build-gnupg.sh /
+RUN bash -x /build-gnupg.sh
+
 ARG GPGME_VERSION=1.17.1
 COPY build-gpgme.sh /
 RUN bash -x /build-gpgme.sh

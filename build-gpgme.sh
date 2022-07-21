@@ -18,10 +18,10 @@ fi
 
 [ -f autogen.sh ] && ./autogen.sh
 
-./configure --prefix=/deps $EXTRA_CONFIGURE_FLAGS
+./configure --enable-maintainer-mode --prefix=/deps $EXTRA_CONFIGURE_FLAGS
 
-set +x
-echo "+ make -j$(nproc)" 1>&2
+# some tests won't find libgcrypt otherwise
+export LD_LIBRARY_PATH=/deps/lib:"$LD_LIBRARY_PATH"
 
 if [ -z $VERBOSE ]; then
     make -j$(nproc) 2>&1 | while read line; do

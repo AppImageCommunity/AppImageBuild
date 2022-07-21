@@ -2,9 +2,9 @@
 
 set -xe
 
-git clone https://dev.gnupg.org/source/libgcrypt.git -b libgcrypt-"$LIBGCRYPT_VERSION" libgcrypt-"$LIBGCRYPT_VERSION"
+git clone https://dev.gnupg.org/source/libksba.git -b libksba-"$LIBKSBA_VERSION" libksba-"$LIBKSBA_VERSION"
 
-cd libgcrypt-"$LIBGCRYPT_VERSION"
+cd libksba-"$LIBKSBA_VERSION"
 
 # needed for automake
 export PATH=/deps/bin:"$PATH"
@@ -18,7 +18,7 @@ fi
 
 [ -f autogen.sh ] && ./autogen.sh
 
-./configure --enable-maintainer-mode --prefix=/deps --disable-doc $EXTRA_CONFIGURE_FLAGS
+./configure --prefix=/deps --disable-doc $EXTRA_CONFIGURE_FLAGS
 
 set +x
 echo "+ make -j$(nproc)" 1>&2
@@ -36,4 +36,4 @@ set -x
 make install
 
 cd ../../
-rm -rf libgcrypt-"$LIBGCRYPT_VERSION"/
+rm -rf libksba-"$LIBKSBA_VERSION"/

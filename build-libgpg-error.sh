@@ -18,7 +18,7 @@ fi
 
 [ -f autogen.sh ] && ./autogen.sh
 
-./configure --prefix=/deps $EXTRA_CONFIGURE_FLAGS --disable-doc
+./configure --enable-maintainer-mode --prefix=/deps $EXTRA_CONFIGURE_FLAGS --disable-doc
 
 set +x
 echo "+ make -j$(nproc)" 1>&2

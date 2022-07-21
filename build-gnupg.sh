@@ -2,9 +2,9 @@
 
 set -xe
 
-git clone https://dev.gnupg.org/source/libgcrypt.git -b libgcrypt-"$LIBGCRYPT_VERSION" libgcrypt-"$LIBGCRYPT_VERSION"
+git clone https://dev.gnupg.org/source/gnupg.git -b gnupg-"$GNUPG_VERSION" gnupg-"$GNUPG_VERSION"
 
-cd libgcrypt-"$LIBGCRYPT_VERSION"
+cd gnupg-"$GNUPG_VERSION"
 
 # needed for automake
 export PATH=/deps/bin:"$PATH"
@@ -36,4 +36,4 @@ set -x
 make install
 
 cd ../../
-rm -rf libgcrypt-"$LIBGCRYPT_VERSION"/
+rm -rf gnupg-"$GNUPG_VERSION"/
