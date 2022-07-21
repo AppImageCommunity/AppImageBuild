@@ -49,13 +49,21 @@ ARG AUTOMAKE_VERSION=1.16.5
 COPY build-automake.sh /
 RUN bash -x /build-automake.sh
 
-ARG GPGME_VERSION=1.17.1
-COPY build-gpgme.sh /
-RUN bash -x /build-gpgme.sh
+ARG LIBGPG_ERROR_VERSION=1.45
+COPY build-libgpg-error.sh /
+RUN bash -x /build-libgpg-error.sh
+
+ARG LIBASSUAN_VERSION=2.5.5
+COPY build-libassuan.sh /
+RUN bash -x /build-libassuan.sh
 
 ARG LIBGCRYPT_VERSION=1.10.1
 COPY build-libgcrypt.sh /
 RUN bash -x /build-libgcrypt.sh
+
+ARG GPGME_VERSION=1.17.1
+COPY build-gpgme.sh /
+RUN bash -x /build-gpgme.sh
 
 # create unprivileged user for non-build-script use of this image
 # build-in-docker.sh will likely not use this one, as it enforces the caller's uid inside the container
