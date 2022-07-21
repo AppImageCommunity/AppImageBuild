@@ -48,11 +48,6 @@ ARG DESKTOP_FILE_UTILS_VERSION=0.26
 COPY build-desktop-file-utils.sh /
 RUN bash -x /build-desktop-file-utils.sh
 
-# create unprivileged user for non-build-script use of this image
-# build-in-docker.sh will likely not use this one, as it enforces the caller's uid inside the container
-RUN useradd --system build
-USER build
-
 ARG AUTOMAKE_VERSION=1.16.5
 COPY build-automake.sh /
 RUN bash -x /build-automake.sh
@@ -64,3 +59,8 @@ RUN bash -x /build-gpgme.sh
 ARG LIBGCRYPT_VERSION=1.10.1
 COPY build-libgcrypt.sh /
 RUN bash -x /build-libgcrypt.sh
+
+# create unprivileged user for non-build-script use of this image
+# build-in-docker.sh will likely not use this one, as it enforces the caller's uid inside the container
+RUN useradd --system build
+USER build
