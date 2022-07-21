@@ -6,14 +6,14 @@ git clone https://dev.gnupg.org/source/libgcrypt.git -b libgcrypt-"$LIBGCRYPT_VE
 
 cd libgcrypt-"$LIBGCRYPT_VERSION"
 
+# needed for automake
+export PATH=/deps/bin:"$PATH"
+
 EXTRA_CONFIGURE_FLAGS=
 if [ "$ARCH" == "i386" ]; then
     EXTRA_CONFIGURE_FLAGS=" --build=i686-linux-gnu --host=i686-linux-gnu --target=i686-linux-gnu"
 elif [ "$ARCH" == "armhf" ] || [ "$ARCH" == "aarch64" ]; then
     EXTRA_CONFIGURE_FLAGS=" --host=$DEBARCH --target=$DEBARCH"
-
-    # https://askubuntu.com/a/338670
-    export PATH=/deps/bin:"$PATH"
 fi
 
 [ -f autogen.sh ] && ./autogen.sh
