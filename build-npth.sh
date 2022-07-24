@@ -2,9 +2,9 @@
 
 set -xe
 
-git clone https://dev.gnupg.org/source/npth.git -b libnpth-"$LIBNPTH_VERSION" libnpth-"$LIBNPTH_VERSION"
+git clone https://dev.gnupg.org/source/npth.git -b npth-"$NPTH_VERSION" npth-"$NPTH_VERSION"
 
-cd libnpth-"$LIBNPTH_VERSION"
+cd npth-"$NPTH_VERSION"
 
 # needed for automake
 export PATH=/deps/bin:"$PATH"
@@ -36,4 +36,4 @@ set -x
 make install
 
 cd ../../
-rm -rf libnpth-"$LIBNPTH_VERSION"/
+rm -rf npth-"$NPTH_VERSION"/
