@@ -30,6 +30,8 @@ packages=(
     libssl-dev
     zsync
     fuse
+    libgpgme-dev
+    libgcrypt20-dev
 )
 
 apt-get install -y "${packages[@]}"
