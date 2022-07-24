@@ -1,8 +1,8 @@
 prefix=/usr
 exec_prefix=${prefix}
 includedir=${prefix}/include
-libdir=${prefix}/lib/__ARCH__-linux-gnu
-host=__ARCH__-pc-linux-gnu
+libdir=${prefix}/lib/__triplet__
+host=__triplet__
 mtcflags=
 mtlibs=-pthread
 

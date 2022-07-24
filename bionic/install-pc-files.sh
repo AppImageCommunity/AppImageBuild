@@ -2,8 +2,20 @@
 
 set -exo pipefail
 
-[[ "$ARCH" == "" ]] && exit 1
+
+case "$ARCH" in
+    x86_64|i386|aarch64)
+        triplet="$ARCH"-linux-gnu
+        ;;
+    armhf)
+        triplet=arm-linux-gnueabihf
+        ;;
+    *)
+        echo "Error: unknown architecture: $ARCH"
+        exit 2
+        ;;
+esac
 
 for i in /bionic/*.pc; do
-    sed "s|__ARCH__|$ARCH|g" < "$i" > /usr/lib/"$ARCH"-linux-gnu/pkgconfig/"$(basename "$i")"
+    sed "s|__triplet__|$triplet|g" < "$i" > /usr/lib/"$triplet"/pkgconfig/"$(basename "$i")"
 done

@@ -1,8 +1,8 @@
 prefix=/usr
 exec_prefix=${prefix}
 includedir=${prefix}/include
-libdir=${prefix}/lib/x86_64-linux-gnu
-host=x86_64-pc-linux-gnu
+libdir=${prefix}/lib/__triplet__
+host=__triplet__
 api_version=1
 symmetric_ciphers="arcfour blowfish cast5 des aes twofish serpent rfc2268 seed camellia idea salsa20 gost28147 chacha20"
 asymmetric_ciphers="dsa elgamal rsa ecc"
