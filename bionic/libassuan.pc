@@ -1,0 +1,14 @@
+prefix=/usr
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${prefix}/lib/__ARCH__-linux-gnu
+host=__ARCH__-pc-linux-gnu
+api_version=2
+
+Name: libassuan
+Description: IPC library for the GnuPG components
+Requires: gpg-error
+Version: 2.5.1
+Cflags: 
+Libs: -lassuan
+URL: https://www.gnupg.org/related_software/libassuan/index.html

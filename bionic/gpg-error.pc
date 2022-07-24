@@ -1,0 +1,14 @@
+prefix=/usr
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${prefix}/lib/__ARCH__-linux-gnu
+host=__ARCH__-pc-linux-gnu
+mtcflags=
+mtlibs=-pthread
+
+Name: gpg-error
+Description: GPG Runtime
+Version: 1.27
+Cflags: 
+Libs: -L${prefix}/lib/__ARCH__-linux-gnu -lgpg-error
+URL: https://www.gnupg.org/software/libgpg-error/index.html

@@ -15,6 +15,9 @@ ARG DESKTOP_FILE_UTILS_VERSION=0.26
 COPY build-desktop-file-utils.sh /
 RUN bash -x /build-desktop-file-utils.sh
 
+COPY ./bionic /bionic
+RUN bash -x /bionic/install-pc-files.sh
+
 # create unprivileged user for non-build-script use of this image
 # build-in-docker.sh will likely not use this one, as it enforces the caller's uid inside the container
 RUN adduser --system --group build
