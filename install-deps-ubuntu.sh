@@ -30,8 +30,9 @@ packages=(
     libssl-dev
     zsync
     fuse
-    libgpgme-dev
-    libgcrypt20-dev
+    gettext
+    bison
+    texinfo
 )
 
 apt-get install -y "${packages[@]}"
