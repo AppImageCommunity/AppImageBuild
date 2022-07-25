@@ -16,8 +16,8 @@ COPY build-desktop-file-utils.sh /
 RUN bash -x /build-desktop-file-utils.sh
 
 ARG AUTOMAKE_VERSION=1.16.5
-COPY BUILD-AUTOMAKE.SH /
-RUN BASH -X /BUILD-AUTOMAKE.SH
+COPY build-automake.sh /
+RUN bash -x build-automake.sh
 
 ARG LIBGPG_ERROR_VERSION=1.45
 COPY build-libgpg-error.sh /
