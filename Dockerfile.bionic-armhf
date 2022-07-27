@@ -5,6 +5,11 @@ ENV ARCH=armhf DIST=bionic
 # inherited by build scripts
 ARG VERBOSE=0
 
+COPY /entrypoint-ubuntu.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+SHELL ["/entrypoint.sh", "bash", "-c"]
+
 COPY ./install-deps-ubuntu.sh /
 RUN bash -x /install-deps-ubuntu.sh
 
