@@ -17,6 +17,7 @@ packages=(
     automake
     autoconf
     libtool
+    libtool-bin
     patch
     wget
     vim-common
