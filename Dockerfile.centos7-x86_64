@@ -42,9 +42,6 @@ ARG ZSYNC_VERSION=0.6.2
 COPY build-zsync.sh /
 RUN bash -x /build-zsync.sh
 
-ARG MESON_VERSION=0.63.0
-RUN python3 -m pip install meson=="$MESON_VERSION"
-
 ARG DESKTOP_FILE_UTILS_VERSION=56d220dd679c7c3a8f995a41a27a7d6f3df49dea
 COPY build-desktop-file-utils.sh /
 RUN bash -x /build-desktop-file-utils.sh
