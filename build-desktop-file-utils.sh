@@ -2,15 +2,20 @@
 
 set -xe
 
-wget https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-"$DESKTOP_FILE_UTILS_VERSION".tar.xz -O - | tar xJ
+git clone -n https://github.com/freedesktop/xdg-desktop-file-utils.git desktop-file-utils-"$DESKTOP_FILE_UTILS_VERSION"
 
 cd desktop-file-utils-"$DESKTOP_FILE_UTILS_VERSION"
 
+# this workaround is needed since we use a commit hash at the moment to support 1.5 type desktop entries
+git checkout "$DESKTOP_FILE_UTILS_VERSION"
+
 export CHOST="$DEBARCH"
 
-export CFLAGS="-I/deps/include"
-export CPPFLAGS="$CFLAGS"
-export LDFLAGS="-L/deps/lib"
+flags="-no-pie -static"
+
+export CFLAGS="-I/deps/include $flags"
+export CPPFLAGS="$CFLAGS $flags"
+export LDFLAGS="-L/deps/lib $flags"
 
 ./autogen.sh --prefix=/deps --target="$CHOST" --build="x86_64-linux-gnu" --host="$CHOST"
 
