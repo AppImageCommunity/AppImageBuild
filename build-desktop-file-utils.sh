@@ -11,8 +11,6 @@ git checkout "$DESKTOP_FILE_UTILS_VERSION"
 
 export CHOST="$DEBARCH"
 
-flags="-no-pie -static"
-
 export CFLAGS="-I/deps/include $flags"
 export CPPFLAGS="$CFLAGS $flags"
 export LDFLAGS="-L/deps/lib $flags"
