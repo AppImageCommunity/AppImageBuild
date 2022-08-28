@@ -6,7 +6,7 @@ ENV ARCH=x86_64 DIST=centos7
 ARG VERBOSE=0
 
 RUN yum install -y centos-release-scl && \
-    yum install -y devtoolset-8 \
+    yum install -y devtoolset-9 \
         wget make gnupg zip git subversion glib2-devel automake libtool patch zlib-devel cairo-devel openssl-devel curl-devel \
         fuse-devel vim-common zlib-devel desktop-file-utils fuse fuse-libs gtest-devel \
         libXft-devel librsvg2-devel curl libffi-devel gettext-devel file python2 bzip2 \
