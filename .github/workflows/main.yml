@@ -21,6 +21,8 @@ jobs:
             DIST: 'bionic'
           - ARCH: 'x86_64'
             DIST: 'bionic'
+          - ARCH: 'riscv64'
+            DIST: 'focal'
 
     name: Build ${{ matrix.DIST }}  (${{ matrix.ARCH }})
     env:
